@@ -24,11 +24,12 @@ From the repository root in Windows PowerShell:
 
 ```powershell
 Set-Location 'C:\path\to\A2-BUS4012-MyETFHub-'
+Set-Location '.\frontend'
 npm ci
 Copy-Item '.env.example' '.env'
 ```
 
-Edit the local `.env` file with your own Supabase project settings:
+Edit the local `frontend\.env` file with your own Supabase project settings:
 
 ```dotenv
 VITE_API_BASE_URL=http://127.0.0.1:8000
@@ -94,9 +95,9 @@ If PowerShell prevents activation of `.venv`, run the tools directly instead of 
 
 | File | Variable | Purpose |
 | --- | --- | --- |
-| `.env` | `VITE_API_BASE_URL` | FastAPI base URL used by the browser application. |
-| `.env` | `VITE_SUPABASE_URL` | Supabase project URL for browser authentication. |
-| `.env` | `VITE_SUPABASE_PUBLISHABLE_KEY` | Supabase publishable key for browser authentication. |
+| `frontend\.env` | `VITE_API_BASE_URL` | FastAPI base URL used by the browser application. |
+| `frontend\.env` | `VITE_SUPABASE_URL` | Supabase project URL for browser authentication. |
+| `frontend\.env` | `VITE_SUPABASE_PUBLISHABLE_KEY` | Supabase publishable key for browser authentication. |
 | `backend\.env` | `SUPABASE_URL` | Supabase project URL used by FastAPI. |
 | `backend\.env` | `SUPABASE_PUBLISHABLE_KEY` | Supabase publishable key used to verify authenticated requests and make RLS-aware database calls. |
 | `backend\.env` | `FRONTEND_ORIGIN` | Exact Vite browser origin allowed by FastAPI CORS, for example `http://localhost:5173`. |
@@ -104,7 +105,7 @@ If PowerShell prevents activation of `.venv`, run the tools directly instead of 
 Create local files from the committed templates:
 
 ```powershell
-Copy-Item '.env.example' '.env'
+Copy-Item '.\frontend\.env.example' '.\frontend\.env'
 Copy-Item '.\backend\.env.example' '.\backend\.env'
 ```
 
@@ -156,10 +157,11 @@ Set-Location 'C:\path\to\A2-BUS4012-MyETFHub-\backend'
 .\.venv\Scripts\python.exe -m pytest -q
 ```
 
-Build the frontend from the repository root:
+Build the frontend from the frontend directory:
 
 ```powershell
 Set-Location 'C:\path\to\A2-BUS4012-MyETFHub-'
+Set-Location '.\frontend'
 npm run build
 ```
 
