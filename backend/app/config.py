@@ -9,6 +9,9 @@ class Settings(BaseSettings):
     supabase_url: str | None = None
     supabase_publishable_key: str | None = None
     frontend_origin: str = "http://localhost:5173"
+    frontend_origin_regex: str | None = (
+        r"^https://a2-bus4012-myetfhub-[a-z0-9-]+-ngoc-giang\.vercel\.app$"
+    )
 
     model_config = SettingsConfigDict(
         env_file=".env",

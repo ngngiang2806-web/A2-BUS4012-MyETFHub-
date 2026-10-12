@@ -77,6 +77,8 @@ FRONTEND_ORIGIN=http://localhost:5173
 
 For production, set `FRONTEND_ORIGIN` to the exact frontend origin without a trailing slash, for example `https://bus4012-myetfhub-ngocgiang.vercel.app`.
 
+The API also permits this repository's Vercel preview URLs through `FRONTEND_ORIGIN_REGEX`: `https://a2-bus4012-myetfhub-<deployment-id>-ngoc-giang.vercel.app`. The default is deliberately restricted to that project pattern rather than allowing arbitrary Vercel domains.
+
 Start FastAPI:
 
 ```powershell
@@ -105,6 +107,7 @@ If PowerShell prevents activation of `.venv`, run the tools directly instead of 
 | `backend\.env` | `SUPABASE_URL` | Supabase project URL used by FastAPI. |
 | `backend\.env` | `SUPABASE_PUBLISHABLE_KEY` | Supabase publishable key used to verify authenticated requests and make RLS-aware database calls. |
 | `backend\.env` | `FRONTEND_ORIGIN` | Exact browser origin allowed by FastAPI CORS, without a trailing slash, for example `http://localhost:5173`. |
+| `backend\.env` | `FRONTEND_ORIGIN_REGEX` | Restricted optional regex for allowed preview origins; defaults to this project's Vercel preview URL pattern. |
 
 Create local files from the committed templates:
 
