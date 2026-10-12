@@ -40,6 +40,7 @@ export default function HoldingsTable({ holdings, onDelete }: HoldingsTableProps
           <tr className="border-b border-slate-200">
             <th className="pb-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Ticker</th>
             <th className="pb-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Name</th>
+            <th className="pb-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Purchase Date</th>
             <th className="pb-3 text-xs font-semibold text-slate-500 uppercase tracking-wider text-right">Units</th>
             <th className="pb-3 text-xs font-semibold text-slate-500 uppercase tracking-wider text-right">Price</th>
             <th className="pb-3 text-xs font-semibold text-slate-500 uppercase tracking-wider text-right">Invested</th>
@@ -55,6 +56,7 @@ export default function HoldingsTable({ holdings, onDelete }: HoldingsTableProps
               <tr key={h.id} className="border-b border-slate-100 hover:bg-slate-50 transition-colors">
                 <td className="py-3.5 text-sm font-semibold text-slate-900">{h.ticker}</td>
                 <td className="py-3.5 text-sm text-slate-600 max-w-[200px] truncate">{h.name}</td>
+                <td className="py-3.5 text-sm text-slate-700 whitespace-nowrap">{new Date(h.purchaseDate).toLocaleDateString("en-AU")}</td>
                 <td className="py-3.5 text-sm text-slate-700 text-right">{h.units.toLocaleString()}</td>
                 <td className="py-3.5 text-sm text-slate-700 text-right">A${h.purchasePrice.toFixed(2)}</td>
                 <td className="py-3.5 text-sm font-medium text-slate-900 text-right">A${value.toFixed(2)}</td>
