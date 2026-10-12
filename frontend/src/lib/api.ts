@@ -2,11 +2,16 @@ import type { Session } from "@supabase/supabase-js";
 import { MOCK_ETF_CATALOG } from "../data/mockETFs";
 import type { Holding, InvestorProfile } from "../types";
 
-const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+const configuredApiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
-if (!apiBaseUrl) {
+if (!configuredApiBaseUrl) {
   throw new Error("API is not configured. Set VITE_API_BASE_URL in .env.");
 }
+
+// API paths below always start with "/". Normalising the configured base URL
+// prevents a trailing slash in a deployment variable from producing a redirect
+// during the browser's CORS preflight request.
+const apiBaseUrl = configuredApiBaseUrl.replace(/\/+$/, "");
 
 export class ApiError extends Error {
   constructor(message: string, public readonly status: number) {

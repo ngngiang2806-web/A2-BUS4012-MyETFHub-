@@ -37,6 +37,8 @@ VITE_SUPABASE_URL=https://your-project-ref.supabase.co
 VITE_SUPABASE_PUBLISHABLE_KEY=your-supabase-publishable-key
 ```
 
+`VITE_API_BASE_URL` must not end with `/`. For a Vercel deployment, set it to the API deployment origin, for example `https://a2-bus4012-myetfhub.vercel.app`, then redeploy the frontend because Vite embeds this value at build time.
+
 Start the frontend:
 
 ```powershell
@@ -73,6 +75,8 @@ SUPABASE_PUBLISHABLE_KEY=your-supabase-publishable-key
 FRONTEND_ORIGIN=http://localhost:5173
 ```
 
+For production, set `FRONTEND_ORIGIN` to the exact frontend origin without a trailing slash, for example `https://bus4012-myetfhub-ngocgiang.vercel.app`.
+
 Start FastAPI:
 
 ```powershell
@@ -95,12 +99,12 @@ If PowerShell prevents activation of `.venv`, run the tools directly instead of 
 
 | File | Variable | Purpose |
 | --- | --- | --- |
-| `frontend\.env` | `VITE_API_BASE_URL` | FastAPI base URL used by the browser application. |
+| `frontend\.env` | `VITE_API_BASE_URL` | FastAPI base URL used by the browser application, without a trailing slash. |
 | `frontend\.env` | `VITE_SUPABASE_URL` | Supabase project URL for browser authentication. |
 | `frontend\.env` | `VITE_SUPABASE_PUBLISHABLE_KEY` | Supabase publishable key for browser authentication. |
 | `backend\.env` | `SUPABASE_URL` | Supabase project URL used by FastAPI. |
 | `backend\.env` | `SUPABASE_PUBLISHABLE_KEY` | Supabase publishable key used to verify authenticated requests and make RLS-aware database calls. |
-| `backend\.env` | `FRONTEND_ORIGIN` | Exact Vite browser origin allowed by FastAPI CORS, for example `http://localhost:5173`. |
+| `backend\.env` | `FRONTEND_ORIGIN` | Exact browser origin allowed by FastAPI CORS, without a trailing slash, for example `http://localhost:5173`. |
 
 Create local files from the committed templates:
 
