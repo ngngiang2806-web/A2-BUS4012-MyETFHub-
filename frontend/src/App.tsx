@@ -177,7 +177,7 @@ export default function App() {
         {step === "signup" && <SignUpScreen onSignUp={handleSignUp} onNavigateToSignIn={handleNavigateToSignIn} />}
         {step === "login" && <LoginScreen onLogin={handleLogin} onNavigateToSignUp={handleNavigateToSignUp} loginError={loginError} />}
         {step === "profile" && <InvestorProfileScreen initialData={profile} onSave={handleSaveProfile} />}
-        {step === "add-etf" && <AddETFScreen onAdd={handleAddHolding} />}
+        {step === "add-etf" && <AddETFScreen onAdd={handleAddHolding} onViewPortfolio={() => setStep("dashboard")} />}
         {step === "success" && lastAdded && <SuccessScreen holding={lastAdded} onViewPortfolio={() => setStep("dashboard")} onAddAnother={() => setStep("add-etf")} />}
         {step === "dashboard" && <PortfolioDashboardScreen holdings={holdings} investorName={profile.fullName} onAddNew={() => setStep("add-etf")} onDelete={handleDeleteHolding} />}
       </main>

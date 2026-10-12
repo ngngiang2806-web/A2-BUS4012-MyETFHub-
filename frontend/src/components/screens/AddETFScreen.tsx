@@ -3,12 +3,14 @@ import type { Holding } from "../../types";
 import { MOCK_ETF_CATALOG } from "../../data/mockETFs";
 import Input from "../ui/Input";
 import Select from "../ui/Select";
+import Button from "../ui/Button";
 import IconButton from "../ui/icon-button";
 import FormSection from "../ui/FormSection";
 import ProgressBar from "../ProgressBar";
 
 interface AddETFScreenProps {
   onAdd: (holding: Omit<Holding, "id" | "addedAt">) => Promise<void>;
+  onViewPortfolio: () => void;
 }
 
 const ETF_OPTIONS = MOCK_ETF_CATALOG.map((etf) => ({
@@ -16,7 +18,7 @@ const ETF_OPTIONS = MOCK_ETF_CATALOG.map((etf) => ({
   label: `${etf.ticker} — ${etf.name}`,
 }));
 
-export default function AddETFScreen({ onAdd }: AddETFScreenProps) {
+export default function AddETFScreen({ onAdd, onViewPortfolio }: AddETFScreenProps) {
   const [ticker, setTicker] = useState("");
   const [name, setName] = useState("");
   const [units, setUnits] = useState("");
@@ -165,7 +167,12 @@ export default function AddETFScreen({ onAdd }: AddETFScreenProps) {
                 error={errors.purchaseDate}
               />
 
-              <IconButton type="submit" disabled={isSubmitting}>{isSubmitting ? "Saving…" : "Add to Portfolio"}</IconButton>
+              <div className="space-y-3">
+                <IconButton type="submit" disabled={isSubmitting}>{isSubmitting ? "Saving…" : "Add to Portfolio"}</IconButton>
+                <Button type="button" variant="secondary" onClick={onViewPortfolio} disabled={isSubmitting}>
+                  View Portfolio Dashboard
+                </Button>
+              </div>
             </form>
           </FormSection>
         </div>
