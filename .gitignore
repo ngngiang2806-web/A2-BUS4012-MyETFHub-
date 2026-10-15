@@ -31,6 +31,31 @@ __pycache__/
 .coverage
 htmlcov/
 
+# Python packaging and build artifacts
+*.egg-info/
+*.egg
+eggs/
+*.whl
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+*.so
+
+# Local databases
+*.sqlite3
+*.db
+
+# TypeScript build cache
+*.tsbuildinfo
+
+# Deployment artifacts
+.vercel/
+
+# Security-sensitive files (private keys, certificates)
+*.pem
+*.key
+*.crt
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
