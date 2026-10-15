@@ -101,9 +101,6 @@ export default function LandingPage({ onSignUp, onSignIn }: LandingPageProps) {
               </div>
             ))}
           </div>
-          <div className="text-center mt-10">
-            <Button onClick={onSignUp} className="px-8 py-3">Create Your Free Account</Button>
-          </div>
         </div>
       </section>
 
